@@ -1,5 +1,5 @@
 PullupLog::Application.routes.draw do
-
+	resources :users
   match '/signup', to: "users#new"
 
   get "static_pages/help"
