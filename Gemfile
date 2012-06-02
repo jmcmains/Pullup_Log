@@ -5,7 +5,7 @@ gem 'bootstrap-sass'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'pg'
-
+gem 'bcrypt-ruby'
 group :development do
 	gem 'sqlite3'
 end
