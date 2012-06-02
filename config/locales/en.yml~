@@ -3,6 +3,6 @@
 
 en:
   activerecord:
-    attributes:
-      user:
-        password_digest: "Password"
+  	attributes:
+  		user:
+  			password_digest: "Password"
