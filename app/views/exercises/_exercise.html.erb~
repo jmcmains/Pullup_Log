@@ -1,0 +1,9 @@
+<li>
+	<span class="content"><%= wrap(exercise.content) %></span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(exercise.created_at) %> ago.
+	</span>
+	<% if current_user?(exercise.user) %>
+		<% link_to "delete", exercise, method: :delete, confirm: "You sure?", title: exercise.content %>
+	<% end %>
+</li>

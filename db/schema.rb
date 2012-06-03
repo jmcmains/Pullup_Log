@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603000410) do
+ActiveRecord::Schema.define(:version => 20120603163809) do
+
+  create_table "bands", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "exercises", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "pullup_type_id"
+    t.integer  "reps"
+    t.date     "date"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "exercises", ["user_id", "created_at"], :name => "index_exercises_on_user_id_and_created_at"
+
+  create_table "pullup_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

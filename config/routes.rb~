@@ -1,6 +1,5 @@
 PullupLog::Application.routes.draw do
 	resources :password_resets
-
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: "users#new"

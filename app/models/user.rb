@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
-
+	has_many :exercises, dependent: :destroy
   
   before_save { |user| user.email = email.downcase }
   before_create { generate_token(:remember_token) }
@@ -15,9 +15,13 @@ class User < ActiveRecord::Base
   def send_password_reset
 		generate_token(:password_reset_token)
 		self.password_reset_sent_at = Time.zone.now
-		self.save!
+		self.update_attributes(password_reset_sent_at: Time.zone.now, remember_token: self.password_reset_token)
 		UserMailer.password_reset(self).deliver
 	end
+	
+	def feed
+		Exercise.where("user_id = ?", id)
+	end	
 	
 	def generate_token(column)
 		begin

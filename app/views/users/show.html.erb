@@ -7,4 +7,13 @@
 			</h1>
 		</section>
 	</aside>
+	<div class="span8">
+		<% if @user.exercises.any? %>
+			<h3>Pull ups (<%= @user.exercises.count %>)</h3>
+			<ol class="exercises">
+				<%= render @exercises %>
+			</ol>
+			<%= will_paginate @exercises %>
+		<% end %>
+	</div>
 </div>
