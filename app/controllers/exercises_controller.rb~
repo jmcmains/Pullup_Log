@@ -1,12 +1,13 @@
 class ExercisesController < ApplicationController
 	before_filter :signed_in_user, only: [:create, :destroy]
-	before filter :correct_user, only: :destroy
+	before_filter :correct_user, only: :destroy
 	def create
 		@exercise = current_user.exercises.build(params[:exercise])
 		if @exercise.save
 			flash[:success] = "Exercise created!"
 			redirect_to root_path
 		else
+			flash[:error] = 'Invalid post'
 			@feed_items = []
 			render 'static_pages/home'
 		end

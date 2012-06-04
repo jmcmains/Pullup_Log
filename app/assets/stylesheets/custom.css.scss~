@@ -138,6 +138,26 @@ aside {
 	}
 }
 
+.stats {
+	overflow: auto;
+	a {
+		float:left;
+		padding: 0 10px;
+		border-left: 1px solid $grayLighter;
+		color: gray;
+		&:first-child {
+			padding-left: 0;
+			border: 0;
+		}
+		&:hover {
+			text-decoration: none;
+			color: $blue;
+		}
+	}
+	strong {
+		display: block;
+	}
+}
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -147,8 +167,25 @@ input, textarea, select, .uneditable-input {
 	height: auto;
 	margin-bottom:15px;
 	@include box_sizing;
+	&#exercise_date_1i, &#exercise_date_2i, &#exercise_date_3i {
+		width: 32.6%;
+	}
 }
+div.checkboxes {
+	width:100%;
 
+	text-align:center;
+	div.checkbox {
+		border: 1px solid #bbb;
+		display:inline-block;
+		width:31%;
+		padding: 10px;
+		padding-left:25px;
+		margin-bottom:15px;
+
+		@include box_sizing;
+	}
+}
 #error_explanation {
 	color: #f00;
 	ul {
@@ -176,3 +213,31 @@ input, textarea, select, .uneditable-input {
 		}
 	}
 }
+
+/* exercises */
+
+.exercises {
+	list-style: none;
+	margin: 10px 0 0 0;
+	li {
+		padding: 10px 0;
+		border-top: 1px solid #e8e8e8;
+	}
+}
+
+.content {
+	display: block;
+}
+
+.timestamp {
+	color: $grayLight;
+}
+
+aside {
+	textarea {
+		height: 100px;
+		margin-bottom: 5px;
+	}
+}
+
+

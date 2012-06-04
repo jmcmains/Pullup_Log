@@ -1,0 +1,4 @@
+<div class = "checkbox">
+	<%= f.check_box(:band_id, {},n, nil) %>
+	<%= Band.all.first(n).last.name %>
+</div>

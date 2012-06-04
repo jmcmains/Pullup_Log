@@ -1,9 +1,28 @@
-<li>
+<li id="<%= exercise.id %>">
+	<span class="user">
+		<%= link_to exercise.user.name, exercise.user %> did <%= pluralize(exercise.reps,exercise.pullup_type.name.downcase) %> 
+		<% if exercise.bands.first.name == "None" %>
+			unassisted
+		<% else %>
+			using 
+			<% if exercise.bands.count < 2 %>
+				a 
+			<% end %>
+			<%= exercise.bands.map(&:name).to_sentence.downcase %> 
+			<% if exercise.bands.count > 1 %>
+				bands
+			<% else %>
+				band 
+			<% end %>
+		<% end %>
+		on <%= exercise.date %>
+	</span>
+	<span class="content"> 
 	<span class="content"><%= wrap(exercise.content) %></span>
 	<span class="timestamp">
-		Posted <%= time_ago_in_words(exercise.created_at) %> ago.
+		Posted <%= time_ago_in_words(fexercise.created_at) %> ago
 	</span>
 	<% if current_user?(exercise.user) %>
-		<% link_to "delete", exercise, method: :delete, confirm: "You sure?", title: exercise.content %>
+		<%= link_to "delete", exercise, method: :delete, confirm: "You sure?", title: exercise.content %>
 	<% end %>
 </li>

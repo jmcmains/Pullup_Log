@@ -7,6 +7,7 @@ class ExercisesController < ApplicationController
 			flash[:success] = "Exercise created!"
 			redirect_to root_path
 		else
+			flash.now[:error] = 'Invalid post'
 			@feed_items = []
 			render 'static_pages/home'
 		end

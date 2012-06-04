@@ -8,6 +8,7 @@
 		</section>
 	</aside>
 	<div class="span8">
+		<%= render 'follow_form' if signed_in? %>
 		<% if @user.exercises.any? %>
 			<h3>Pull ups (<%= @user.exercises.count %>)</h3>
 			<ol class="exercises">

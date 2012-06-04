@@ -3,7 +3,10 @@
 		<aside class="span4">
 			<section>
 				<%= render 'shared/user_info' %>
-			</section
+			</section>
+			<section>
+				<%= render 'shared/stats' %>
+			</section>
 			<section>
 				<%= render 'shared/exercise_form' %>
 			</section>
@@ -16,10 +19,8 @@
 <% else %>
 	<% provide(:title, 'Home') %>
 	<div class="center hero-unit">
-	<h1>Welcome to the Sample App</h1>
-		<h2>Find me in app/views/static_pages/home.html.erb</h2>
+	<h1>Welcome to the Rubberbanditz Pull up Tracker</h1>
+		<h2>its THE place to track your pullup progress!</h2>
 		<%= link_to "Sign up now!", signup_path, class: 'btn btn-large btn-primary' %>
 	</div>
-
-	<%= link_to(image_tag("rails.png", alt: "Rails"), "http://rubyonrails.org") %>
 <% end %>

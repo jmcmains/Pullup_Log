@@ -1,8 +1,24 @@
 <li id="<%= feed_item.id %>">
 	<span class="user">
-		<%= link_to feed_item.user.name, feed_item.user %>
+		<%= link_to feed_item.user.name, feed_item.user %> did <%= pluralize(feed_item.reps,feed_item.pullup_type.name.downcase) %> 
+		<% if feed_item.bands.first.name == "None" %>
+			unassisted
+		<% else %>
+			using 
+			<% if feed_item.bands.count < 2 %>
+				a 
+			<% end %>
+			<%= feed_item.bands.map(&:name).to_sentence.downcase %> 
+			<% if feed_item.bands.count > 1 %>
+				bands
+			<% else %>
+				band 
+			<% end %>
+		<% end %>
+		on <%= exercise.date %>
 	</span>
-	<span class="content"><%= wrap(feed_item.content) %> </span>
+	<span class="content"> 
+	<span class="content"><%= wrap(feed_item.content) %></span>
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(feed_item.created_at) %> ago
 	</span>

@@ -1,7 +1,27 @@
 <%= form_for(@exercise) do |f| %>
 	<% render 'shared/error_messages', object: f.object %>
 	<div class="field">
+		<%= f.text_field :reps, placeholder: "How many pullups did you do?" %>
+	</div>
+	<div class="field">
+		What type of pullup did you do?
+		<%= f.collection_select :pullup_type_id, PullupType.all, :id, :name %>
+	</div>
+		<% n=1 %>
+		What Bbands did you use?
+		<div class="checkboxes">
+			<%= f.fields_for :bands_used do |builder| %>
+				<%= render "shared/band_fields", {f: builder, n: n} %>
+				<% n=n+1 %>
+			<% end %>
+		</div>
+	<div class="field">
+		<%= f.label :date, "When?",  style: "width:100px" %>
+		<%= f.date_select :date, order: [:month, :day, :year], class: "dateselect" %>
+	</div>
+
+	<div class="field">
 		<%= f.text_area :content, placeholder: "Comment on this exercise..." %>
 	</div>
-	<% f.submit "Post", class: "btn btn-large btn-primary" %>
+	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
